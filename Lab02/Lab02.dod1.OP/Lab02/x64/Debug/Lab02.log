@@ -1,0 +1,3 @@
+﻿  Lab02.dod1.c
+C:\Users\akmit\source\repos\OP\Lab02\Lab02.dod1.OP\Lab02\Lab02.dod1.c(16,31): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+  Lab02.vcxproj -> C:\Users\akmit\source\repos\OP\Lab02\Lab02.dod1.OP\x64\Debug\Lab02.exe
