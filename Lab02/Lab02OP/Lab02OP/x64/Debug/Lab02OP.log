@@ -1,4 +1,0 @@
-﻿  Program.c
-C:\Users\akmit\source\repos\Lab02OP\Lab02OP\Program.c(11,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\akmit\source\repos\Lab02OP\Lab02OP\Program.c(13,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  Lab02OP.vcxproj -> C:\Users\akmit\source\repos\Lab02OP\x64\Debug\Lab02OP.exe
