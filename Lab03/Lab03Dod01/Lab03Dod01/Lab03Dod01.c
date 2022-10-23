@@ -26,4 +26,6 @@ int main(void) {
 	for (int i = 0; i < N; i++) {
 		printf("%.3lf\t", *(vector + i));
 	}
+
+	return 0;
 }
