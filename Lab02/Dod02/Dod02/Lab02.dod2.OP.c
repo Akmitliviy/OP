@@ -19,7 +19,7 @@ int main(void) {
 
 	if (a < b && fabs(a) < 1 && fabs(b) < 1) {
 		printf("\nx\t\ttaylor\t\tfunc\n");
-		for (double x = a; x < b; x += counter) {
+		for (double x = a; x - 0.00000001 <= b; x += counter) {
 			while (fabs(d) > epsilon) {
 				d *= ((3.0 * (double)i + 1.0) * x / (3.0 * (double)i + 3.0));
 				taylor += d;
