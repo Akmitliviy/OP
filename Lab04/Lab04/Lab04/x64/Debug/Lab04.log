@@ -1,0 +1,6 @@
+﻿  Lab04.c
+C:\Users\akmit\source\repos\OP\Lab04\Lab04\Lab04\Lab04.c(14,2): warning C4013: 'gets' undefined; assuming extern returning int
+C:\Users\akmit\source\repos\OP\Lab04\Lab04\Lab04\Lab04.c(17,19): warning C4013: 'tolower' undefined; assuming extern returning int
+C:\Users\akmit\source\repos\OP\Lab04\Lab04\Lab04\Lab04.c(21,14): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\akmit\source\repos\OP\Lab04\Lab04\Lab04\Lab04.c(27,15): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  Lab04.vcxproj -> C:\Users\akmit\source\repos\OP\Lab04\Lab04\x64\Debug\Lab04.exe
