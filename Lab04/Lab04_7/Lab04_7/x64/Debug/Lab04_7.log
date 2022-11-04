@@ -1,4 +1,4 @@
 ﻿  Lab04_7.c
-C:\Users\akmit\source\repos\OP\Lab04\Lab04_7\Lab04_7\Lab04_7.c(42,48): warning C4013: 'pow' undefined; assuming extern returning int
-C:\Users\akmit\source\repos\OP\Lab04\Lab04_7\Lab04_7\Lab04_7.c(75,30): warning C4101: 'resStr': unreferenced local variable
+C:\Users\akmit\source\repos\OP\Lab04\Lab04_7\Lab04_7\Lab04_7.c(73,48): warning C4013: 'pow' undefined; assuming extern returning int
+C:\Users\akmit\source\repos\OP\Lab04\Lab04_7\Lab04_7\Lab04_7.c(107,34): warning C4101: 'resStr': unreferenced local variable
   Lab04_7.vcxproj -> C:\Users\akmit\source\repos\OP\Lab04\Lab04_7\x64\Debug\Lab04_7.exe

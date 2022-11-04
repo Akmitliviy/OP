@@ -21,47 +21,25 @@ void setValues(char filePath[]) {
     }
 }
 
-void AddToLog(char message[]) {
-    FILE* logStream;
-    char logPath[] = "Log.txt",  logStr[100];
+int main(void) {
+    FILE* file, * logStream;
+    char readFrom[1000], writeInto[1000], logPath[] = "Log.txt", logStr[100];
+    double xyz[3] = { 0 }, x, y, z, result = 0;
+    time_t currentTime;
+
+
 
     logStream = fopen(logPath, "a");
     if (logStream != NULL) {
-        time_t currentTime;
         time(&currentTime);
-        
+
         strftime(logStr, 20, "%Y-%m-%d %H:%M:%S", localtime(&currentTime));
 
         strcat(logStr, "]: ");
-        strcat(logStr, message);
+        strcat(logStr, "Program has started");
         fprintf(logStream, "[%s\n", logStr);
         fclose(logStream);
     }
-}
-
-void Formula(double x, double y, double z, double* result, int* isPossible) {
-    do {
-        if ((x - y <= 0 && z - (int)z == 0) || pow((x - y), z) + pow(x, 2) == 0) {
-            //printf("\nSorry, but we can't perform this operation, because values of variables you chose lie beyond the domain of a function\n");
-            AddToLog("Error in calculating");
-            break;
-        }
-
-        *result = (x + 3 * (x - y) + pow(x, 2)) / (pow((x - y), z) + pow(x, 2));
-        *isPossible = 1;
-        AddToLog("result was calculated successfully");
-        //printf("\nResult is %lf\n", b);
-
-    } while (0);
-}
-
-int main(void) {
-    FILE* file;
-    char readFrom[1000], writeInto[1000];
-    double xyz[3] = { 0 }, result = 0;
-    int isPossible = 0;
-
-    AddToLog("Program has started");
 
     printf("Path of the file with start values: ");
     scanf("%s", readFrom);
@@ -72,47 +50,138 @@ int main(void) {
         fread(xyz, sizeof(double), 3, file);
         fclose(file);
 
-        AddToLog("Values was read");
-    }
-    char modeExtention[100], resStr[100];
+        logStream = fopen(logPath, "a");
+        if (logStream != NULL) {
+            time(&currentTime);
 
-    Formula(xyz[0], xyz[1], xyz[2], &result, &isPossible);
+            strftime(logStr, 20, "%Y-%m-%d %H:%M:%S", localtime(&currentTime));
+
+            strcat(logStr, "]: ");
+            strcat(logStr, "Values was read");
+            fprintf(logStream, "[%s\n", logStr);
+            fclose(logStream);
+        }
+    }
+
+    x = xyz[0];
+    y = xyz[1];
+    z = xyz[2];
 
     printf("Path of the target file: ");
     scanf("%s", writeInto);
+    do {
+        if ((x - y <= 0 && z - (int)z == 0) || pow((x - y), z) + pow(x, 2) == 0) {
+            //printf("\nSorry, but we can't perform this operation, because values of variables you chose lie beyond the domain of a function\n");
 
-    while (isPossible) {
-        printf("Text or binary representation ('t' or 'b'): ");
-        scanf("%s", modeExtention);
 
-        if (!strcmp(modeExtention, "b")) {
+            logStream = fopen(logPath, "a");
+            if (logStream != NULL) {
+                time(&currentTime);
 
-            file = fopen(writeInto, "wb");
+                strftime(logStr, 20, "%Y-%m-%d %H:%M:%S", localtime(&currentTime));
 
-            if (file != NULL) {
-                fwrite(&result, sizeof(double), 1, file);
-                fclose(file);
-                AddToLog("Result was added as binary");
-            }
-            break;
-        }
-        else if (!strcmp(modeExtention, "t")) {
-
-            file = fopen(writeInto, "wt");
-
-            if (file != NULL) {
-                fprintf(file, "%lf", result);
-                fclose(file);
-
-                AddToLog("Result was added as text");
+                strcat(logStr, "]: ");
+                strcat(logStr, "Error in calculating");
+                fprintf(logStream, "[%s\n", logStr);
+                fclose(logStream);
                 break;
             }
-            else {
-                AddToLog("Uncorrect input value for binary or text mode");
+        }
+
+        result = (x + 3 * (x - y) + pow(x, 2)) / (pow((x - y), z) + pow(x, 2));
+
+
+        logStream = fopen(logPath, "a");
+        if (logStream != NULL) {
+            time(&currentTime);
+
+            strftime(logStr, 20, "%Y-%m-%d %H:%M:%S", localtime(&currentTime));
+
+            strcat(logStr, "]: ");
+            strcat(logStr, "result was calculated successfully");
+            fprintf(logStream, "[%s\n", logStr);
+            fclose(logStream);
+            //printf("\nResult is %lf\n", b);
+        }
+
+        char modeExtention[100], resStr[100];
+
+        while (1) {
+            printf("Text or binary representation ('t' or 'b'): ");
+            scanf("%s", modeExtention);
+
+            if (!strcmp(modeExtention, "b")) {
+
+                file = fopen(writeInto, "wb");
+
+                if (file != NULL) {
+                    fwrite(&result, sizeof(double), 1, file);
+                    fclose(file);
+
+                    logStream = fopen(logPath, "a");
+                    if (logStream != NULL) {
+                        time(&currentTime);
+
+                        strftime(logStr, 20, "%Y-%m-%d %H:%M:%S", localtime(&currentTime));
+
+                        strcat(logStr, "]: ");
+                        strcat(logStr, "Result was added as binary");
+                        fprintf(logStream, "[%s\n", logStr);
+                        fclose(logStream);
+                    }
+                }
+                break;
+            }
+            else if (!strcmp(modeExtention, "t")) {
+
+                file = fopen(writeInto, "wt");
+
+                if (file != NULL) {
+                    fprintf(file, "%lf", result);
+                    fclose(file);
+
+                    logStream = fopen(logPath, "a");
+                    if (logStream != NULL) {
+                        time(&currentTime);
+
+                        strftime(logStr, 20, "%Y-%m-%d %H:%M:%S", localtime(&currentTime));
+
+                        strcat(logStr, "]: ");
+                        strcat(logStr, "Result was added as text");
+                        fprintf(logStream, "[%s\n", logStr);
+                        fclose(logStream);
+                    }
+                    break;
+                }
+                else {
+
+                    logStream = fopen(logPath, "a");
+                    if (logStream != NULL) {
+                        time(&currentTime);
+
+                        strftime(logStr, 20, "%Y-%m-%d %H:%M:%S", localtime(&currentTime));
+
+                        strcat(logStr, "]: ");
+                        strcat(logStr, "Uncorrect input value for binary or text mode");
+                        fprintf(logStream, "[%s\n", logStr);
+                        fclose(logStream);
+                    }
+                }
             }
         }
-    }
+    } while (0);
 
-    AddToLog("End of the program");
-    return 0;
+
+    time(&currentTime);
+
+    logStream = fopen(logPath, "a");
+    if (logStream != NULL) {
+        strftime(logStr, 20, "%Y-%m-%d %H:%M:%S", localtime(&currentTime));
+
+        strcat(logStr, "]: ");
+        strcat(logStr, "End of the program");
+        fprintf(logStream, "[%s\n", logStr);
+        fclose(logStream);
+        return 0;
+    }
 }

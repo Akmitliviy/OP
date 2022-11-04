@@ -1,0 +1,38 @@
+[2022-11-04 12:38:56]: Program has started
+[2022-11-04 12:39:21]: Values was read
+[2022-11-04 12:39:21]: result was calculated successfully
+[2022-11-04 12:39:33]: Result was added as text
+[2022-11-04 12:39:33]: End of the program
+[2022-11-04 12:40:15]: Program has started
+[2022-11-04 12:40:37]: Values was read
+[2022-11-04 12:40:37]: result was calculated successfully
+[2022-11-04 12:40:45]: Result was added as binary
+[2022-11-04 12:40:45]: End of the program
+[2022-11-04 12:55:12]: Program has started
+[2022-11-04 12:55:48]: Values was read
+[2022-11-04 12:55:48]: result was calculated successfully
+[2022-11-04 12:55:58]: Result was added as binary
+[2022-11-04 12:55:58]: End of the program
+[2022-11-05 00:43:21]: Program has started
+[2022-11-05 00:44:14]: Program has started
+[2022-11-05 00:45:18]: Values was read
+[2022-11-05 00:45:18]: result was calculated successfully
+[2022-11-05 00:45:29]: Result was added as binary
+[2022-11-05 00:45:29]: End of the program
+[2022-11-05 00:46:15]: Program has started
+[2022-11-05 00:46:19]: Values was read
+[2022-11-05 00:46:19]: result was calculated successfully
+[2022-11-05 00:46:26]: Result was added as text
+[2022-11-05 00:46:26]: End of the program
+[2022-11-05 00:49:24]: Program has started
+[2022-11-05 00:49:35]: Program has started
+[2022-11-05 00:49:46]: Program has started
+[2022-11-05 00:49:56]: Program has started
+[2022-11-05 00:50:04]: Program has started
+[2022-11-05 00:50:10]: Values was read
+[2022-11-05 00:50:10]: result was calculated successfully
+[2022-11-05 00:50:32]: Program has started
+[2022-11-05 00:50:39]: Values was read
+[2022-11-05 00:50:39]: result was calculated successfully
+[2022-11-05 00:50:47]: Result was added as binary
+[2022-11-05 00:50:47]: End of the program
