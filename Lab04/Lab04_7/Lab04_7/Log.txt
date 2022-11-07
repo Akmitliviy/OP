@@ -1,10 +1,12 @@
-[2022-11-05 01:15:29]: Program has started
-[2022-11-05 01:15:40]: Values was read
-[2022-11-05 01:15:48]: result was calculated successfully
-[2022-11-05 01:15:50]: Result was added as binary
-[2022-11-05 01:15:50]: End of the program
-[2022-11-05 01:16:20]: Program has started
-[2022-11-05 01:16:27]: Values was read
-[2022-11-05 01:16:33]: result was calculated successfully
-[2022-11-05 01:16:36]: Result was added as text
-[2022-11-05 01:16:36]: End of the program
+[2022-11-05 13:16:31]: Program has started
+[2022-11-05 13:16:53]: Incorrect input file path
+[2022-11-05 13:17:00]: Values was read: X = -17.220000, Y = 6.330000, Z = 3.250000
+[2022-11-05 13:17:00]: Error in calculating
+[2022-11-05 13:17:00]: End of the program
+
+[2022-11-05 13:21:16]: Program has started
+[2022-11-05 13:21:22]: Values was read: X = 7.150000, Y = 6.330000, Z = 3.250000
+[2022-11-05 13:21:43]: Result was calculated successfully. Result = 1.175911
+[2022-11-05 13:21:46]: Result was saved as binary
+[2022-11-05 13:21:46]: End of the program
+
