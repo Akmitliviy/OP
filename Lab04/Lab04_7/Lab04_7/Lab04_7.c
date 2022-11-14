@@ -33,7 +33,7 @@ int main(void) {
     do {
         onGoing = 0;
         logStream = fopen(logPath, "a");
-        
+
         if (logStream != NULL) {
             time(&currentTime);
             strftime(logStr, 20, "%Y-%m-%d %H:%M:%S", localtime(&currentTime));
@@ -115,7 +115,7 @@ int main(void) {
                 fprintf(logStream, "[%s\n", logStr);
                 fclose(logStream);
             }
-            
+
             break;
         }
 
@@ -139,67 +139,66 @@ int main(void) {
 
         char modeExtention[100], resStr[100];
 
-        while (1) {
-            printf("\nIn which format you want to save result? ('text' or 'binary'): ");
-            scanf("%s", modeExtention);
+        printf("\nIn which format you want to save result? ('text' or 'binary'): ");
+        scanf("%s", modeExtention);
 
-            if (!(strcmp(modeExtention, "binary") && strcmp(modeExtention, "b"))) {
+        if (!(strcmp(modeExtention, "binary") && strcmp(modeExtention, "b"))) {
 
-                file = fopen(writeInto, "wb");
+            file = fopen(writeInto, "wb");
 
-                if (file != NULL) {
-                    fwrite(&result, sizeof(double), 1, file);
-                    fclose(file);
-
-                    logStream = fopen(logPath, "a");
-                    if (logStream != NULL) {
-                        time(&currentTime);
-                        strftime(logStr, 20, "%Y-%m-%d %H:%M:%S", localtime(&currentTime));
-
-                        strcat(logStr, "]: Result was saved as binary");
-                        fprintf(logStream, "[%s\n", logStr);
-                        fclose(logStream);
-                    }
-
-                    puts("\nResult was saved as binary");
-                }
-                break;
-            }
-            else if (!(strcmp(modeExtention, "text") && strcmp(modeExtention, "t"))) {
-
-                file = fopen(writeInto, "wt");
-
-                if (file != NULL) {
-                    fprintf(file, "%lf", result);
-                    fclose(file);
-
-                    logStream = fopen(logPath, "a");
-                    if (logStream != NULL) {
-                        time(&currentTime);
-                        strftime(logStr, 20, "%Y-%m-%d %H:%M:%S", localtime(&currentTime));
-
-                        strcat(logStr, "]: Result was saved as text");
-                        fprintf(logStream, "[%s\n", logStr);
-                        fclose(logStream);
-                    }
-
-                    puts("\nResult was saved as text");
-                }
-                break;
-            }
-            else {
+            if (file != NULL) {
+                fwrite(&result, sizeof(double), 1, file);
+                fclose(file);
 
                 logStream = fopen(logPath, "a");
                 if (logStream != NULL) {
                     time(&currentTime);
                     strftime(logStr, 20, "%Y-%m-%d %H:%M:%S", localtime(&currentTime));
 
-                    strcat(logStr, "]: Incorrect input value for binary or text mode");
+                    strcat(logStr, "]: Result was saved as binary");
                     fprintf(logStream, "[%s\n", logStr);
                     fclose(logStream);
                 }
+
+                puts("\nResult was saved as binary");
             }
         }
+        else if (!(strcmp(modeExtention, "text") && strcmp(modeExtention, "t"))) {
+
+            file = fopen(writeInto, "wt");
+
+            if (file != NULL) {
+                fprintf(file, "%lf", result);
+                fclose(file);
+
+                logStream = fopen(logPath, "a");
+                if (logStream != NULL) {
+                    time(&currentTime);
+                    strftime(logStr, 20, "%Y-%m-%d %H:%M:%S", localtime(&currentTime));
+
+                    strcat(logStr, "]: Result was saved as text");
+                    fprintf(logStream, "[%s\n", logStr);
+                    fclose(logStream);
+                }
+
+                puts("\nResult was saved as text");
+            }
+        }
+        else {
+
+            logStream = fopen(logPath, "a");
+            if (logStream != NULL) {
+                time(&currentTime);
+                strftime(logStr, 20, "%Y-%m-%d %H:%M:%S", localtime(&currentTime));
+
+                strcat(logStr, "]: Incorrect input value for binary or text mode");
+                fprintf(logStream, "[%s\n", logStr);
+                fclose(logStream);
+            }
+
+            puts("\nYou chose incorrect format");
+        }
+
     } while (0);
 
     logStream = fopen(logPath, "a");

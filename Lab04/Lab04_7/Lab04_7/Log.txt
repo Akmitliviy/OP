@@ -1,12 +1,37 @@
-[2022-11-05 13:16:31]: Program has started
-[2022-11-05 13:16:53]: Incorrect input file path
-[2022-11-05 13:17:00]: Values was read: X = -17.220000, Y = 6.330000, Z = 3.250000
-[2022-11-05 13:17:00]: Error in calculating
-[2022-11-05 13:17:00]: End of the program
+[2022-11-07 13:17:41]: Program has started
+[2022-11-07 13:18:08]: Values was read: X = 7.150000, Y = 6.330000, Z = 3.250000
+[2022-11-07 13:18:39]: Result was calculated successfully. Result = 1.175911
+[2022-11-07 13:18:42]: Result was saved as text
+[2022-11-07 13:18:42]: End of the program
 
-[2022-11-05 13:21:16]: Program has started
-[2022-11-05 13:21:22]: Values was read: X = 7.150000, Y = 6.330000, Z = 3.250000
-[2022-11-05 13:21:43]: Result was calculated successfully. Result = 1.175911
-[2022-11-05 13:21:46]: Result was saved as binary
-[2022-11-05 13:21:46]: End of the program
+[2022-11-07 13:19:27]: Program has started
+[2022-11-07 13:19:35]: Incorrect input file path
+[2022-11-07 13:19:42]: Values was read: X = 7.150000, Y = 6.330000, Z = 3.250000
+[2022-11-07 13:20:01]: Result was calculated successfully. Result = 1.175911
+[2022-11-07 13:20:03]: Result was saved as binary
+[2022-11-07 13:20:03]: End of the program
+
+[2022-11-07 18:33:02]: Program has started
+[2022-11-07 18:33:11]: Values was read: X = 7.150000, Y = 6.330000, Z = 3.250000
+[2022-11-07 18:33:27]: Result was calculated successfully. Result = 1.175911
+[2022-11-07 18:33:29]: Result was saved as binary
+[2022-11-07 18:33:29]: End of the program
+
+[2022-11-07 18:33:33]: Program has started
+[2022-11-07 18:33:42]: Values was read: X = 7.150000, Y = 6.330000, Z = 3.250000
+[2022-11-07 18:33:57]: Result was calculated successfully. Result = 1.175911
+[2022-11-07 18:33:59]: Incorrect input value for binary or text mode
+[2022-11-07 18:33:59]: End of the program
+
+[2022-11-07 18:35:48]: Program has started
+[2022-11-07 18:35:52]: Values was read: X = 7.150000, Y = 6.330000, Z = 3.250000
+[2022-11-07 18:36:11]: Result was calculated successfully. Result = 1.175911
+[2022-11-07 18:36:16]: Result was saved as binary
+[2022-11-07 18:36:17]: End of the program
+
+[2022-11-07 18:36:21]: Program has started
+[2022-11-07 18:36:24]: Values was read: X = 7.150000, Y = 6.330000, Z = 3.250000
+[2022-11-07 18:36:37]: Result was calculated successfully. Result = 1.175911
+[2022-11-07 18:36:39]: Incorrect input value for binary or text mode
+[2022-11-07 18:36:39]: End of the program
 
