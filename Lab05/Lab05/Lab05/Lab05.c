@@ -43,12 +43,13 @@ void tabulation(int funcNumber) {
 	double h = 0, a = 0, b = 1, x = 0, y = 0;
 	int funcReturn;
 
-	printf("Please, enter step: ");
-	scanf_s("%lf", &h);
 
 	switch (funcNumber)
 	{
 	case 1:
+		printf("Please, enter step: ");
+		scanf_s("%lf", &h);
+
 		printf("x\t\ty\n\n");
 		for (double x = a; x <= b; x += h) {
 			y = firstFunc(x);
@@ -60,6 +61,9 @@ void tabulation(int funcNumber) {
 		}
 		break;
 	case 2:
+		printf("Please, enter step: ");
+		scanf_s("%lf", &h);
+
 		printf("x\t\ty\t\treturn\n\n");
 		for (double x = a; x <= b; x += h) {
 			funcReturn = secondFunc(x, &y);
@@ -70,7 +74,7 @@ void tabulation(int funcNumber) {
 		}
 		break;
 	default:
-		printf("Wrong number of function.");
+		printf("\nWrong number of function.\n");
 		break;
 	}
 }
