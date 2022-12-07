@@ -1,7 +1,8 @@
-﻿  Lab07Dod1c.c
-C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\Lab07Dod1c.c(20,17): warning C4133: 'function': incompatible types - from 'int [10000]' to 'float *'
-C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\Lab07Dod1c.c(32,13): warning C4133: 'function': incompatible types - from 'int [10000]' to 'float *'
-C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\Lab07Dod1c.c(59,19): warning C4028: formal parameter 1 different from declaration
-C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\Lab07Dod1c.c(91,37): warning C4101: 'tmp': unreferenced local variable
-C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\Lab07Dod1c.c(143,23): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+﻿  Lab07Dod1.c
+C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\Lab07Dod1.c(91,37): warning C4101: 'tmp': unreferenced local variable
+C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\Lab07Dod1.c(143,23): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\Lab07Dod1.c(49): warning C6244: Local declaration of 'arr' hides previous declaration at line '14' of 'c:\users\akmit\source\repos\op\lab07\lab07dod1\lab07dod1\lab07dod1.c'.: Lines: 14
+C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\Lab07Dod1.c(54): warning C6244: Local declaration of 'arr' hides previous declaration at line '14' of 'c:\users\akmit\source\repos\op\lab07\lab07dod1\lab07dod1\lab07dod1.c'.: Lines: 14
+C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\Lab07Dod1.c(74): warning C6244: Local declaration of 'arr' hides previous declaration at line '14' of 'c:\users\akmit\source\repos\op\lab07\lab07dod1\lab07dod1\lab07dod1.c'.: Lines: 14
+C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\Lab07Dod1.c(129): warning C6244: Local declaration of 'arr' hides previous declaration at line '14' of 'c:\users\akmit\source\repos\op\lab07\lab07dod1\lab07dod1\lab07dod1.c'.: Lines: 14
   Lab07Dod1.vcxproj -> C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\x64\Debug\Lab07Dod1.exe

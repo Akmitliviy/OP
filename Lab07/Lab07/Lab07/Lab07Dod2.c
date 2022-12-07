@@ -53,7 +53,7 @@ double GetY(double x) {
 void funcFor(double step) {
 	double a = 0, b = 1, y;
 
-	printf("x\t\ty\n\n");
+	printf("via For\n\nx\t\ty\n\n");
 	for (double x = a; x <= b; x += step) {
 		y = GetY(x);
 
@@ -67,7 +67,7 @@ void funcFor(double step) {
 void funcWhile(double step) {
 	double a = 0, b = 1, x = a, y;
 
-	printf("x\t\ty\n\n");
+	printf("via While\n\nx\t\ty\n\n");
 	while (x <= b) {
 		y = GetY(x);
 
@@ -81,7 +81,7 @@ void funcWhile(double step) {
 }
 void funcDoWhile(double step) {
 	double a = 0, b = 1, x = a, y;
-	printf("x\t\ty\n\n");
+	printf("via Do while\n\nx\t\ty\n\n");
 	do{
 		y = GetY(x);
 

@@ -6,7 +6,7 @@ int calculator(int n, ...);
 
 int main() {
 
-	printf("Number of numbers: %d", calculator(8, -1, 5, 6, 7, -2, 2, 4, -3));
+	printf("Number of numbers: %d\n", calculator(8, -1, 5, 6, 7, -2, 2, 4, -3));
 
 	return 0;
 }

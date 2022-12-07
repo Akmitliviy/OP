@@ -11,10 +11,10 @@
 
 
 time_t t;
+int arr[N];
+int arrSave[N];
 
 int main() {
-	int arr[N];
-	int arrSave[N];
 
 	Initialize(arr, N);
 	CopyArr(arrSave, arr, N);
@@ -91,14 +91,14 @@ void qs_sort(int array[], long start, long end)
 	long head = start, tail = end - 1, tmp;
 	long diff = end - start;
 	long pe_index;
-	// якщо залишилося менше двох елементів – кінець рекурсії
+
 	if (diff < 1) return;
 	if (diff == 1)
 		if (array[start] > array[end]) {
 			swap(array, start, end);
 			return;
 		}
-	// пошук індексу розділяючого елементу pe_index
+
 	long m = (start + end) / 2;
 	if (array[start] <= array[m]) {
 		if (array[m] <= array[end]) pe_index = m;
@@ -110,7 +110,7 @@ void qs_sort(int array[], long start, long end)
 		else if (array[end] <= array[m]) pe_index = m;
 		else pe_index = end;
 	}
-	long pe = array[pe_index]; // сам розділяючий елемент
+	long pe = array[pe_index];
 	swap(array, pe_index, end);
 		while (1) {
 			while (array[head] < pe)
@@ -122,8 +122,8 @@ void qs_sort(int array[], long start, long end)
 		}
 	swap(array, head, end);
 	long mid = head;
-	qs_sort(array, start, mid - 1); // рекурсивний виклик для 1-ої підмножини
-	qs_sort(array, mid + 1, end); // рекурсивний виклик для 2-ої підмножини
+	qs_sort(array, start, mid - 1);
+	qs_sort(array, mid + 1, end);
 }
 
 char* isSorted(int* arr, long size) {

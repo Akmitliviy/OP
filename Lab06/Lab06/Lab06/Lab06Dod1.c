@@ -71,11 +71,6 @@ int DoesKeySymbolsExist(char* string, char * subStr) {
 		if(strchr(string, subStr[i]) == NULL)
 			counter  = 0;
 	}
-	//pStr = strpbrk(string, subStr);
-	//while (pStr != NULL) {
-	//	counter++;
-	//	pStr = strpbrk(pStr + 1, subStr);
-	//}
 
 	return counter;
 }

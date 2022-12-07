@@ -1,2 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<DEFECTS></DEFECTS>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\</FILEPATH>
+      <FILENAME>Lab07Dod1c.c</FILENAME>
+      <LINE>49</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'arr' hides previous declaration at line '14' of 'c:\users\akmit\source\repos\op\lab07\lab07dod1\lab07dod1\lab07dod1c.c'.</DESCRIPTION>
+    <FUNCTION>Initialize</FUNCTION>
+    <DECORATED>Initialize</DECORATED>
+    <FUNCLINE>49</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\</FILEPATH>
+        <FILENAME>Lab07Dod1c.c</FILENAME>
+        <LINE>14</LINE>
+        <COLUMN>4</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\</FILEPATH>
+      <FILENAME>Lab07Dod1c.c</FILENAME>
+      <LINE>54</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'arr' hides previous declaration at line '14' of 'c:\users\akmit\source\repos\op\lab07\lab07dod1\lab07dod1\lab07dod1c.c'.</DESCRIPTION>
+    <FUNCTION>Show</FUNCTION>
+    <DECORATED>Show</DECORATED>
+    <FUNCLINE>54</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\</FILEPATH>
+        <FILENAME>Lab07Dod1c.c</FILENAME>
+        <LINE>14</LINE>
+        <COLUMN>4</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\</FILEPATH>
+      <FILENAME>Lab07Dod1c.c</FILENAME>
+      <LINE>74</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'arr' hides previous declaration at line '14' of 'c:\users\akmit\source\repos\op\lab07\lab07dod1\lab07dod1\lab07dod1c.c'.</DESCRIPTION>
+    <FUNCTION>bubbleSort</FUNCTION>
+    <DECORATED>bubbleSort</DECORATED>
+    <FUNCLINE>74</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\</FILEPATH>
+        <FILENAME>Lab07Dod1c.c</FILENAME>
+        <LINE>14</LINE>
+        <COLUMN>4</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\</FILEPATH>
+      <FILENAME>Lab07Dod1c.c</FILENAME>
+      <LINE>129</LINE>
+      <COLUMN>6</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'arr' hides previous declaration at line '14' of 'c:\users\akmit\source\repos\op\lab07\lab07dod1\lab07dod1\lab07dod1c.c'.</DESCRIPTION>
+    <FUNCTION>isSorted</FUNCTION>
+    <DECORATED>isSorted</DECORATED>
+    <FUNCLINE>129</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>C:\Users\akmit\source\repos\OP\Lab07\Lab07Dod1\Lab07Dod1\</FILEPATH>
+        <FILENAME>Lab07Dod1c.c</FILENAME>
+        <LINE>14</LINE>
+        <COLUMN>4</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>

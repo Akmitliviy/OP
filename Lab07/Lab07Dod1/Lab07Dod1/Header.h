@@ -7,5 +7,5 @@ void qs_sort(int array[], long start, long end);
 void bubbleSort(int* arr, long size);
 void ShowTime(char* message);
 char* isSorted(int* arr, long size);
-void CopyArr(float* destination, int* source, long size);
+void CopyArr(int* destination, int* source, long size);
 char* isEqual(int* arr1, int* arr2, long size);
