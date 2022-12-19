@@ -18,5 +18,16 @@
     <ClCompile Include="Lab10.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Functions.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FIFO_LIFO.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

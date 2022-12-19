@@ -11,7 +11,7 @@ int main() {
 	scanf("%d", &n);
 
 	int** matrix = calloc(n, sizeof(int*));
-	int* sizeOfMatrix = calloc(1, sizeof(int));
+	int* sizeOfMatrix = calloc(n, sizeof(int));
 	if (!matrix || !sizeOfMatrix)
 		printf("\nLack of memory :(");
 	else {

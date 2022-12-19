@@ -3,171 +3,77 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "Header.h"
+#include <ctype.h>
 
 #define N 100
 #define STR 200
 
-void SetStruct(char str[STR], struct book* Books, struct book* Start);
-void Show(struct book* Books, struct book* Start, int counter);
-
-struct book {
-
-	char author[N];
-	char book[N];
-	int year;
-	int pages;
-	int price;
-
-	struct book* next;
-};
 int main() {
-	int size = 1;
+	char option;
 	char path[STR];
 	char tempStr[STR];
-	struct book* Books = calloc(size, sizeof(struct book));
-	struct book* Start = NULL;
+	struct book* SBook = calloc(1, sizeof(struct book));
+	struct book* SFirstBook = NULL;
+	struct book* SFree = NULL;
 
 	printf("Enter path of file with list: ");
 	scanf("%s", path);
 
 	FILE* file = fopen(path, "r");
 
-	int counter = 0;
 	while (!feof(file)) {
 
 		fgets(tempStr, STR, file);
-		SetStruct(tempStr, &Books, &Start);
-		
-	/*	char* ptr;
-		char* delimiter = "\t";
-		int i = 0;
-
-		ptr = strtok(tempStr, delimiter);
-		strcpy(Books->author, ptr);
-
-		ptr = strtok(NULL, delimiter);
-		strcpy(Books->book, ptr);
-
-		ptr = strtok(NULL, delimiter);
-		Books->year = atoi(ptr);
-
-		ptr = strtok(NULL, delimiter);
-		Books->pages = atoi(ptr);
-
-		ptr = strtok(NULL, delimiter);
-		Books->price = atoi(ptr);
+		SetStruct(tempStr, &SBook, &SFirstBook);
+	}
+	fclose(file);
+	SBook->mNext = NULL;
 
 
-		if (!Start) {
-			Start = Books;
+	int elementIndex = 0;
+	int onGoing = 1;
+	getchar();
+	while (onGoing) {
+		printf("\n\nKeys: x - Exit, s - Show, o - Sort, a - Add, d - Delete, p - Delete books which names start with П К or Л\n\nPlease, choose option: ");
+		option = getchar();
+
+		switch (option){
+		case 'o':
+			Sort(&SBook, SFirstBook);
+			break;
+		case 's':
+			Show(SBook, SFirstBook);
+			break;
+		case 'a':
+			AddElement(&SBook, &SFirstBook);
+			break;
+		case 'd':
+			printf("\nEnter number of element: ");
+			scanf("%d", &elementIndex);
+			DeleteElement(&SBook, &SFirstBook, elementIndex);
+			break;
+		case 'p':
+			DeletePKL(&SBook, &SFirstBook);
+			break;
+		case 'x':
+			onGoing = 0;
+			if (SFirstBook) {
+				SBook = SFirstBook;
+				while (SBook->mNext) {
+					SFree = SBook;
+					SBook = SBook->mNext;
+					free(SFree);
+				}
+			}
+			break;
+		default:
+			printf("Wrong character!");
+			break;
 		}
 
-		struct book* TempBooks = calloc(1, sizeof(struct book));
-
-		Books->next = TempBooks;
-		Books = TempBooks;
-
-		counter++;*/
+		getchar();
 	}
-	Books->next = NULL;
-
-	/*int maxAuthLen = 0, maxNameLen = 0, tempauth = 0, tempname = 0;
-
-	for (Books = Start; Books->next; Books = Books->next)
-		if (strlen(Books->author) > maxAuthLen)
-			maxAuthLen = strlen(Books->author);
-
-	for (Books = Start; Books->next; Books = Books->next)
-		if (strlen(Books->book) > maxNameLen)
-			maxNameLen = strlen(Books->book);
-
-	printf("\n\nAuthor  \t\tName\t\t\t\t\tYear\t\tPages\t\tPrice\n\n");
-
-	for (Books = Start; Books->next; Books = Books->next) {
-
-		printf("%s  ", Books->author);
-		tempauth = strlen(Books->author);
-		for (int j = 0; j < (maxAuthLen - tempauth) / 8; j++)
-			printf("    ");
-		printf("\t");
-
-		printf("%s", Books->book);
-		tempname = strlen(Books->book);
-		for (int j = 0; j < (maxNameLen - tempname) / 8; j++)
-			printf("    ");
-		printf("\t");
-
-		printf("%d\t\t", Books->year);
-		printf("%d\t\t", Books->pages);
-		printf("%d\n\n", Books->price);
-	}*/
-	Show(Books, Start, counter);
 
 	return 0;
-}
-
-void SetStruct(char str[STR], struct book* Books, struct book* Start) {
-	char* ptr;
-	char* delimiter = "\t";
-	int i = 0;
-
-	ptr = strtok(str, delimiter);
-	strcpy(Books->author, ptr);
-
-	ptr = strtok(NULL, delimiter);
-	strcpy(Books->book, ptr);
-
-	ptr = strtok(NULL, delimiter);
-	Books->year = atoi(ptr);
-
-	ptr = strtok(NULL, delimiter);
-	Books->pages = atoi(ptr);
-
-	ptr = strtok(NULL, delimiter);
-	Books->price = atoi(ptr);
-
-
-	if (!Start) {
-		Start = Books;
-	}
-
-	struct book* TempBooks = calloc(1, sizeof(struct book));
-
-	Books->next = TempBooks;
-	Books = TempBooks;
-}
-
-void Show(struct book* Books, struct book* Start, int counter) {
-
-	int maxAuthLen = 0, maxNameLen = 0, tempauth = 0, tempname = 0;
-
-	for (Books = Start; Books->next; Books = Books->next)
-		if (strlen(Books->author) > maxAuthLen)
-			maxAuthLen = strlen(Books->author);
-
-	for (Books = Start; Books->next; Books = Books->next)
-		if (strlen(Books->book) > maxNameLen)
-			maxNameLen = strlen(Books->book);
-
-	printf("\n\nAuthor  \t\tName\t\t\t\t\tYear\t\tPages\t\tPrice\n\n");
-
-	
-	for (Books = Start; Books->next; Books = Books->next) {
-
-		printf("%s  ", Books->author);
-		tempauth = strlen(Books->author);
-		for (int j = 0; j < (maxAuthLen - tempauth) / 8; j++)
-			printf("    ");
-		printf("\t");
-
-		printf("%s", Books->book);
-		tempname = strlen(Books->book);
-		for (int j = 0; j < (maxNameLen - tempname) / 8; j++)
-			printf("    ");
-		printf("\t");
-
-		printf("%d\t\t", Books->year);
-		printf("%d\t\t", Books->pages);
-		printf("%d\n\n", Books->price);
-	}
 }

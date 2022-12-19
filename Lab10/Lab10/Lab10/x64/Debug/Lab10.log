@@ -1,14 +1,2 @@
 ﻿  Lab10.c
-C:\Users\akmit\source\repos\OP\Lab10\Lab10\Lab10\Lab10.c(39,28): warning C4047: 'function': 'book *' differs in levels of indirection from 'book **'
-C:\Users\akmit\source\repos\OP\Lab10\Lab10\Lab10\Lab10.c(39,22): warning C4024: 'SetStruct': different types for formal and actual parameter 2
-C:\Users\akmit\source\repos\OP\Lab10\Lab10\Lab10\Lab10.c(39,36): warning C4047: 'function': 'book *' differs in levels of indirection from 'book **'
-C:\Users\akmit\source\repos\OP\Lab10\Lab10\Lab10\Lab10.c(39,30): warning C4024: 'SetStruct': different types for formal and actual parameter 3
-C:\Users\akmit\source\repos\OP\Lab10\Lab10\Lab10\Lab10.c(104,13): warning C4047: 'function': 'book *' differs in levels of indirection from 'book **'
-C:\Users\akmit\source\repos\OP\Lab10\Lab10\Lab10\Lab10.c(104,7): warning C4024: 'Show': different types for formal and actual parameter 1
-C:\Users\akmit\source\repos\OP\Lab10\Lab10\Lab10\Lab10.c(104,21): warning C4047: 'function': 'book *' differs in levels of indirection from 'book **'
-C:\Users\akmit\source\repos\OP\Lab10\Lab10\Lab10\Lab10.c(104,15): warning C4024: 'Show': different types for formal and actual parameter 2
-C:\Users\akmit\source\repos\OP\Lab10\Lab10\Lab10\Lab10.c(145,17): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\akmit\source\repos\OP\Lab10\Lab10\Lab10\Lab10.c(149,17): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\akmit\source\repos\OP\Lab10\Lab10\Lab10\Lab10.c(157,14): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\akmit\source\repos\OP\Lab10\Lab10\Lab10\Lab10.c(163,14): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   Lab10.vcxproj -> C:\Users\akmit\source\repos\OP\Lab10\Lab10\x64\Debug\Lab10.exe
