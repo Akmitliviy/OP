@@ -1,158 +1,128 @@
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
 #include "Header.h"
 
-#define STR 200
-
-void SetStruct(char str[STR], struct book** SBook, struct book** SFirstBook) {
-	char* ptr;
+void SetStruct(SBook** SFirstBook, char* str) {
+	char* ptr = NULL;
 	char* delimiter = "\t";
-	int i = 0;
+
+	SBook* TempBook = calloc(1, sizeof(SBook));
+
+	if (!TempBook) {
+		printf("\n\nSorry, can't allocate the memory\n\n");
+	}
 
 	ptr = strtok(str, delimiter);
-	strcpy((*SBook)->mAuthor, ptr);
+	strcpy(TempBook->mAuthor, ptr);
 
 	ptr = strtok(NULL, delimiter);
-	strcpy((*SBook)->mBook, ptr);
+	strcpy(TempBook->mBook, ptr);
 
 	ptr = strtok(NULL, delimiter);
-	(*SBook)->mYear = atoi(ptr);
+	TempBook->mYear = atoi(ptr);
 
 	ptr = strtok(NULL, delimiter);
-	(*SBook)->mPages = atoi(ptr);
+	TempBook->mPages = atoi(ptr);
 
 	ptr = strtok(NULL, delimiter);
-	(*SBook)->mPrice = atoi(ptr);
-
+	TempBook->mPrice = atoi(ptr);
 
 	if (!*SFirstBook) {
-		*SFirstBook = *SBook;
+		*SFirstBook = TempBook;
 	}
-
-	struct book* TempBooks = calloc(1, sizeof(struct book));
-
-	(*SBook)->mNext = TempBooks;
-	*SBook = TempBooks;
-}
-void Show(struct book* SBook, struct book* SFirstBook) {
-
-	int maxAuthLen = 0, maxNameLen = 0, tempauth = 0, tempname = 0;
-
-	for (SBook = SFirstBook; SBook->mNext; SBook = SBook->mNext)
-		if (strlen(SBook->mAuthor) > maxAuthLen)
-			maxAuthLen = strlen(SBook->mAuthor);
-
-	for (SBook = SFirstBook; SBook->mNext; SBook = SBook->mNext)
-		if (strlen(SBook->mBook) > maxNameLen)
-			maxNameLen = strlen(SBook->mBook);
-
-	printf("\n\nAuthor  \t\tName\t\t\t\t\tYear\t\tPages\t\tPrice\n\n");
-
-
-	for (SBook = SFirstBook; SBook->mNext; SBook = SBook->mNext) {
-
-		printf("%s  ", SBook->mAuthor);
-		if (strpbrk(SBook->mAuthor, "abcdefghigklmnopqrstuvwxyz")) {
-			tempauth = maxAuthLen / 2 - strlen(SBook->mAuthor);
-			for (int j = 0; j <= tempauth; j++)
-				printf(" ");
+	else {
+		SBook* SRunner = *SFirstBook;
+		while (SRunner->mNext) {
+			SRunner = SRunner->mNext;
 		}
-		else {
-			tempauth = maxAuthLen - strlen(SBook->mAuthor);
-			for (int j = 0; j <= tempauth / 2; j++)
-				printf(" ");
-		}
-
-		printf("\t%s  ", SBook->mBook);
-		if (strpbrk(SBook->mBook, "abcdefghigklmnopqrstuvwxyz")) {
-			tempname = maxNameLen / 2 - strlen(SBook->mBook);
-			for (int j = 0; j <= tempname; j++)
-				printf(" ");
-		}
-		else {
-			tempname = maxNameLen - strlen(SBook->mBook);
-			for (int j = 0; j <= tempname / 2; j++)
-				printf(" ");
-		}
-		printf("\t%d\t\t", SBook->mYear);
-		printf("%d\t\t", SBook->mPages);
-		printf("%d\n\n", SBook->mPrice);
+		SRunner->mNext = TempBook;
 	}
 }
-void Sort(struct book** SBook, struct book* SFirstBook) {
-	int averagePrice = 0;
-	struct book tempBook;
-	struct book* BooksMinusOne = NULL;
-	int counter = 0;
+void Show(SBook* SFirstBook) {
+	printf("\n\n\t\tAuthor\t\t\t\t\tBook\t\t\tYear\tPages\tPrice\n\n\n");
 
-	for (*SBook = SFirstBook; (*SBook)->mNext; *SBook = (*SBook)->mNext) {
-		averagePrice += (*SBook)->mPrice;
+	for(;SFirstBook; SFirstBook = SFirstBook->mNext){
+		printf("%-42s \t%-49s\t\t%d\t%d\t%d\n\n", SFirstBook->mAuthor, SFirstBook->mBook, SFirstBook->mYear,
+			SFirstBook->mPages, SFirstBook->mPrice);
+	}
+}
+void Sort(SBook** SFirstBook) {
+	SBook* SElement = *SFirstBook;
+	SBook tempBook;
+	SBook* BooksMinusOne = NULL;
+	int averagePrice = 0, counter = 0;
+
+	for (SElement = *SFirstBook; SElement->mNext; SElement = SElement->mNext) {
+		averagePrice += SElement->mPrice;
 		counter++;
 	}
 	averagePrice /= counter;
 
 	for (int i = 0; i < counter - 1; i++) {
 		for (int j = counter - 1; j > i; j--) {
-			GetConcrete(SBook, SFirstBook, j);
-			GetConcrete(&BooksMinusOne, SFirstBook, j - 1);
+			SElement = GetConcrete(*SFirstBook, j);
+			BooksMinusOne = GetConcrete(*SFirstBook, j - 1);
 
-			if ((*SBook)->mPrice > averagePrice && strcmp((*SBook)->mBook, BooksMinusOne->mBook) < 0) {
+			if (SElement->mPrice > averagePrice && strcmp(SElement->mBook, BooksMinusOne->mBook) < 0) {
 				tempBook = *BooksMinusOne;
-				*BooksMinusOne = **SBook;
+				*BooksMinusOne = *SElement;
 				BooksMinusOne->mNext = tempBook.mNext;
-				tempBook.mNext = (*SBook)->mNext;
-				**SBook = tempBook;
+				tempBook.mNext = SElement->mNext;
+				*SElement = tempBook;
 			}
 		}
 	}
 	printf("\n\nList was successfully sorted!\n\n");
 }
-void GetConcrete(struct book** SBook, struct book* SFirstBook, int index) {
-	*SBook = SFirstBook;
+SBook* GetConcrete(SBook* SFirstBook, int index) {
+	SBook* SElement = SFirstBook;
 	while (index--) {
-		*SBook = (*SBook)->mNext;
+		SElement = SElement->mNext;
 	}
+	return SElement;
 }
-void DeleteElement(struct book** SBook, struct book** SFirstBook, int index) {
-	struct book* PrevBook = calloc(1, sizeof(struct book));
-	*SBook = *SFirstBook;
-	while (--index) {
-		PrevBook = *SBook;
-		*SBook = (*SBook)->mNext;
+void DeleteElement(SBook** SFirstBook, int index) {
+	SBook* SElement = *SFirstBook;
+	SBook* PrevBook = SElement;
 
-		if (*SBook == NULL) {
-			*SBook = PrevBook;
+	if (index <= 0) {
+		printf("WARNING: You entered the wrong index");
+		return;
+	}
+
+	while (--index) {
+
+		if (SElement->mNext == NULL) {
 			printf("WARNING: You entered the wrong index");
 			return;
 		}
+
+		PrevBook = SElement;
+		SElement = SElement->mNext;
+
 	}
 
 
-	if ((*SBook)->mNext == NULL) {
-		PrevBook->mNext = (*SBook)->mNext;
-		free(*SBook);
-		*SBook = NULL;
+	if (SElement->mNext == NULL) {
+		PrevBook->mNext = NULL;
+		free(SElement);
+		SElement = NULL;
 	}
-	else if (*SBook == *SFirstBook) {
-		*SFirstBook = (*SBook)->mNext;
-		free(*SBook);
-		*SBook = NULL;
+	else if (SElement == *SFirstBook) {
+		*SFirstBook = SElement->mNext;
+		free(SElement);
+		SElement = NULL;
 	}
 	else {
-		PrevBook->mNext = (*SBook)->mNext;
-		free(*SBook);
-		*SBook = NULL;
+		PrevBook->mNext = SElement->mNext;
+		free(SElement);
+		SElement = NULL;
 	}
 
 	printf("\n\nElement was successfully deleted!\n\n");
 }
-void AddElement(struct book** SBook, struct book** SFirstBook) {
-	struct book* SNewElement = malloc(sizeof(struct book));
-	struct book* SPrevBook = calloc(1, sizeof(struct book));
+void AddElement(SBook** SFirstBook) {
+	SBook* SNewElement = malloc(sizeof(SBook));
+	SBook** SElement = SFirstBook;
+	SBook* SPrevBook = NULL;
 	int index = 0;
 
 	getchar();
@@ -172,10 +142,10 @@ void AddElement(struct book** SBook, struct book** SFirstBook) {
 	printf("\nPlease, enter index where I should paste your element: ");
 	scanf("%d", &index);
 
-	*SBook = *SFirstBook;
-	while (--index) {
-		SPrevBook = *SBook;
-		*SBook = (*SBook)->mNext;
+
+	while (--index > 0) {
+		SPrevBook = *SElement;
+		*SElement = (*SElement)->mNext;
 	}
 
 	if (SPrevBook == NULL) {
@@ -183,61 +153,71 @@ void AddElement(struct book** SBook, struct book** SFirstBook) {
 		return;
 	}
 
-	if (*SBook == NULL) {
-		(*SBook)->mNext = SNewElement;
+	if (*SElement == NULL) {
+		(*SElement)->mNext = SNewElement;
 	}
-	else if (*SBook == *SFirstBook) {
-		SNewElement->mNext = *SBook;
+	else if (*SElement == *SFirstBook) {
+		SNewElement->mNext = *SElement;
 		*SFirstBook = SNewElement;
 	}
 	else {
-		SNewElement->mNext = *SBook;
+		SNewElement->mNext = *SElement;
 		SPrevBook->mNext = SNewElement;
 	}
 
 	printf("\n\nElement was successfully added!\n\n");
 }
-void DeletePKL(struct book** SBook, struct book** SFirstBook) {
-	struct book* PrevBook = *SFirstBook;
+void DeletePKL(SBook** SFirstBook) {
+	SBook* SElement = SFirstBook;
+	SBook* PrevBook = *SFirstBook;
+
 	char P[3] = "П";
 	char K[3] = "К";
 	char L[3] = "Л";
 
-	*SBook = *SFirstBook;
-	while (*SBook) {
-		if (strncmp((*SBook)->mBook, P, 2) == 0 || strncmp((*SBook)->mBook, K, 2) == 0 || strncmp((*SBook)->mBook, L, 2) == 0) {
+	while (SElement) {
+		if (SElement->mYear < 2000) {
 
-			if ((*SBook)->mNext == NULL) {
-				PrevBook->mNext = (*SBook)->mNext;
-				free(*SBook);
-				*SBook = NULL;
+			if (SElement->mNext == NULL) {
+				PrevBook->mNext = SElement->mNext;
+				free(SElement);
+				SElement = NULL;
 				continue;
 			}
-			else if (*SBook == *SFirstBook) {
-				*SFirstBook = (*SBook)->mNext;
-				free(*SBook);
-				*SBook = *SFirstBook;
+			else if (SElement == *SFirstBook) {
+				*SFirstBook = SElement->mNext;
+				free(SElement);
+				SElement = *SFirstBook;
 				continue;
 			}
 			else {
-				PrevBook->mNext = (*SBook)->mNext;
-				free(*SBook);
-				*SBook = PrevBook->mNext;
+				PrevBook->mNext = SElement->mNext;
+				free(SElement);
+				SElement = PrevBook->mNext;
 				continue;
 			}
 		}
 
-		PrevBook = *SBook;
-		*SBook = (*SBook)->mNext;
+		PrevBook = SElement;
+		SElement = SElement->mNext;
 	}
 
 	printf("\n\nElements were successfully deleted!\n\n");
 }
-//void AddToEnd(struct book** SBook, struct book** SFirstBook) {
-//	struct book* SNewElement = malloc(sizeof(struct book));
+SBook* GetLast(SBook* SFirstBook) {
+	SBook* SElement = SFirstBook;
+
+	while (SElement->mNext) {
+		SElement = SElement->mNext;
+	}
+
+	return SElement;
+}
+//void AddToEnd(SBook** SElement, SBook** SFirstBook) {
+//	SBook* SNewElement = malloc(sizeof(SBook));
 //
-//	while ((*SBook)->mNext) {
-//		*SBook = (*SBook)->mNext;
+//	while ((*SElement)->mNext) {
+//		*SElement = (*SElement)->mNext;
 //	}
 //
 //	getchar();
@@ -254,20 +234,20 @@ void DeletePKL(struct book** SBook, struct book** SFirstBook) {
 //	scanf("%d", &SNewElement->mPrice);
 //	SNewElement->mNext;
 //
-//	(*SBook)->mNext = SNewElement;
+//	(*SElement)->mNext = SNewElement;
 //}
-//void GetLast(struct book** SBook) {
-//	while ((*SBook)->mNext) {
-//		*SBook = (*SBook)->mNext;
+//void GetLast(SBook** SElement) {
+//	while ((*SElement)->mNext) {
+//		*SElement = (*SElement)->mNext;
 //	}
 //}
-//int deleteNetElement(struct book* pEl) {
+//int deleteNetElement(SBook* pEl) {
 //	int iRes = 0;
 //	do {
 //		if (!pEl || !pEl->mNext) {
 //			break;
 //		}
-//		struct book* pBook = pEl;
+//		SBook* pBook = pEl;
 //		pEl->mNext = pEl->mNext->mNext;
 //		free(pBook);
 //		iRes = 1;

@@ -1,21 +1,13 @@
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "Header.h"
-#include <ctype.h>
-
-#define N 100
-#define STR 200
 
 int main() {
+
 	char option;
 	char path[STR];
 	char tempStr[STR];
-	struct book* SBook = calloc(1, sizeof(struct book));
-	struct book* SFirstBook = NULL;
-	struct book* SFree = NULL;
+	SBook* SFirstBook = NULL;
+	SBook* SFree = NULL; 
+	SBook* Stemp = NULL;
 
 	printf("Enter path of file with list: ");
 	scanf("%s", path);
@@ -23,12 +15,10 @@ int main() {
 	FILE* file = fopen(path, "r");
 
 	while (!feof(file)) {
-
 		fgets(tempStr, STR, file);
-		SetStruct(tempStr, &SBook, &SFirstBook);
+		SetStruct(&SFirstBook, tempStr);
 	}
 	fclose(file);
-	SBook->mNext = NULL;
 
 
 	int elementIndex = 0;
@@ -40,31 +30,34 @@ int main() {
 
 		switch (option){
 		case 'o':
-			Sort(&SBook, SFirstBook);
+			Sort(&SFirstBook);
 			break;
 		case 's':
-			Show(SBook, SFirstBook);
+			Show(SFirstBook);
 			break;
 		case 'a':
-			AddElement(&SBook, &SFirstBook);
+			AddElement(&SFirstBook);
 			break;
 		case 'd':
 			printf("\nEnter number of element: ");
 			scanf("%d", &elementIndex);
-			DeleteElement(&SBook, &SFirstBook, elementIndex);
+			DeleteElement(&SFirstBook, elementIndex);
 			break;
 		case 'p':
-			DeletePKL(&SBook, &SFirstBook);
+			DeletePKL(&SFirstBook);
 			break;
 		case 'x':
 			onGoing = 0;
 			if (SFirstBook) {
-				SBook = SFirstBook;
-				while (SBook->mNext) {
-					SFree = SBook;
-					SBook = SBook->mNext;
+				SBook* EElement = &SFirstBook;
+				while (EElement) {
+					SFree = EElement;
+					EElement = EElement->mNext;
 					free(SFree);
+
 				}
+				SFree = NULL;
+				SFirstBook = NULL;
 			}
 			break;
 		default:

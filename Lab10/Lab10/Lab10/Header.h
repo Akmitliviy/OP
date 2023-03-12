@@ -1,8 +1,16 @@
 #pragma once
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <Windows.h>
 
 #define N 100
+#define STR 200
 
-struct book {
+typedef struct book {
 
 	char mAuthor[N];
 	char mBook[N];
@@ -11,12 +19,13 @@ struct book {
 	int mPrice;
 
 	struct book* mNext;
-};
+} SBook;
 
-void SetStruct(char str[], struct book** SBook, struct book** SFirstBook);
-void Show(struct book* SBook, struct book* SFirstBook);
-void Sort(struct book** SBook, struct book* SFirstBook);
-void GetConcrete(struct book** SBook, struct book* SFirstBook, int index);
-void DeleteElement(struct book** SBook, struct book** SFirstBook, int index);
-void AddElement(struct book** SBook, struct book** SFirstBookS);
-void DeletePKL(struct book** SBook, struct book** SFirstBook);
+void SetStruct(SBook** SFirstBook, char* str);
+void Show(SBook* SFirstBook);
+void Sort(SBook** SFirstBook);
+SBook* GetConcrete(SBook* SFirstBook, int index);
+void DeleteElement(SBook** SFirstBook, int index);
+void AddElement(SBook** SFirstBookS);
+void DeletePKL(SBook** SFirstBook);
+SBook* GetLast(SBook* SFirstBook);

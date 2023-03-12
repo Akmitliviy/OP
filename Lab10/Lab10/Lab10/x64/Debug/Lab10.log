@@ -1,2 +1,4 @@
-﻿  Lab10.c
+﻿  Functions.c
+C:\Users\akmit\source\repos\OP\Lab10\Lab10\Lab10\Functions.c(131,2): warning C4013: 'gets' undefined; assuming extern returning int
+C:\Users\akmit\source\repos\OP\Lab10\Lab10\Lab10\Functions.c(171,1): warning C4047: 'initializing': 'SBook *' differs in levels of indirection from 'SBook **'
   Lab10.vcxproj -> C:\Users\akmit\source\repos\OP\Lab10\Lab10\x64\Debug\Lab10.exe
