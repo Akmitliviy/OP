@@ -37,10 +37,10 @@ void SetStruct(SBook** SFirstBook, char* str) {
 	}
 }
 void Show(SBook* SFirstBook) {
-	printf("\n\n\t\tAuthor\t\t\t\t\tBook\t\t\tYear\tPages\tPrice\n\n\n");
+	printf("\n\n\tAuthor\t\t\tBook\t\t\t\t\tYear\tPages\tPrice\n\n\n");
 
 	for(;SFirstBook; SFirstBook = SFirstBook->mNext){
-		printf("%-42s \t%-49s\t\t%d\t%d\t%d\n\n", SFirstBook->mAuthor, SFirstBook->mBook, SFirstBook->mYear,
+		printf("%-20s \t%-35s\t\t%d\t%d\t%d\n\n", SFirstBook->mAuthor, SFirstBook->mBook, SFirstBook->mYear,
 			SFirstBook->mPages, SFirstBook->mPrice);
 	}
 }
@@ -73,8 +73,11 @@ void Sort(SBook** SFirstBook) {
 	printf("\n\nList was successfully sorted!\n\n");
 }
 SBook* GetConcrete(SBook* SFirstBook, int index) {
-	SBook* SElement = SFirstBook;
-	while (index--) {
+	SBook* SElement = NULL;
+	if (index > 0)
+		SElement = SFirstBook;
+
+	while (--index > 0) {
 		SElement = SElement->mNext;
 	}
 	return SElement;
@@ -124,6 +127,7 @@ void AddElement(SBook** SFirstBook) {
 	SBook** SElement = SFirstBook;
 	SBook* SPrevBook = NULL;
 	int index = 0;
+	int badIndex = 0;
 
 	getchar();
 
@@ -142,19 +146,24 @@ void AddElement(SBook** SFirstBook) {
 	printf("\nPlease, enter index where I should paste your element: ");
 	scanf("%d", &index);
 
+	if (index <= 0)
+		badIndex = 1;
 
-	while (--index > 0) {
+	while (--index > 0 && !badIndex) {
 		SPrevBook = *SElement;
 		*SElement = (*SElement)->mNext;
 	}
 
-	if (SPrevBook == NULL) {
+	if (!SElement && index)
+		badIndex = 1;
+
+	if (badIndex) {
 		printf("WARNING: You entered the wrong index");
 		return;
 	}
 
 	if (*SElement == NULL) {
-		(*SElement)->mNext = SNewElement;
+		*SFirstBook = SNewElement;
 	}
 	else if (*SElement == *SFirstBook) {
 		SNewElement->mNext = *SElement;
@@ -168,15 +177,15 @@ void AddElement(SBook** SFirstBook) {
 	printf("\n\nElement was successfully added!\n\n");
 }
 void DeletePKL(SBook** SFirstBook) {
-	SBook* SElement = SFirstBook;
+	SBook* SElement = *SFirstBook;
 	SBook* PrevBook = *SFirstBook;
 
-	char P[3] = "П";
-	char K[3] = "К";
-	char L[3] = "Л";
+	char P[3] = "P";
+	char K[3] = "K";
+	char L[3] = "L";
 
 	while (SElement) {
-		if (SElement->mYear < 2000) {
+		if (SElement->mYear < 2000 && !(strncmp(SElement->mBook, P, 1) && strncmp(SElement->mBook, K, 1) && strncmp(SElement->mBook, L, 1))) {
 
 			if (SElement->mNext == NULL) {
 				PrevBook->mNext = SElement->mNext;
