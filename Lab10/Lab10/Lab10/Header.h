@@ -12,11 +12,11 @@
 
 typedef struct book {
 
-	char mAuthor[N];
-	char mBook[N];
-	int mYear;
-	int mPages;
-	int mPrice;
+	char m_Author[N];
+	char m_Book[N];
+	int m_Year;
+	int m_Pages;
+	int m_Price;
 
 	struct book* mNext;
 } SBook;

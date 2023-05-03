@@ -11,19 +11,19 @@ void SetStruct(SBook** SFirstBook, char* str) {
 	}
 
 	ptr = strtok(str, delimiter);
-	strcpy(TempBook->mAuthor, ptr);
+	strcpy(TempBook->m_Author, ptr);
 
 	ptr = strtok(NULL, delimiter);
-	strcpy(TempBook->mBook, ptr);
+	strcpy(TempBook->m_Book, ptr);
 
 	ptr = strtok(NULL, delimiter);
-	TempBook->mYear = atoi(ptr);
+	TempBook->m_Year = atoi(ptr);
 
 	ptr = strtok(NULL, delimiter);
-	TempBook->mPages = atoi(ptr);
+	TempBook->m_Pages = atoi(ptr);
 
 	ptr = strtok(NULL, delimiter);
-	TempBook->mPrice = atoi(ptr);
+	TempBook->m_Price = atoi(ptr);
 
 	if (!*SFirstBook) {
 		*SFirstBook = TempBook;
@@ -40,8 +40,8 @@ void Show(SBook* SFirstBook) {
 	printf("\n\n\tAuthor\t\t\tBook\t\t\t\t\tYear\tPages\tPrice\n\n\n");
 
 	for(;SFirstBook; SFirstBook = SFirstBook->mNext){
-		printf("%-20s \t%-35s\t\t%d\t%d\t%d\n\n", SFirstBook->mAuthor, SFirstBook->mBook, SFirstBook->mYear,
-			SFirstBook->mPages, SFirstBook->mPrice);
+		printf("%-20s \t%-35s\t\t%d\t%d\t%d\n\n", SFirstBook->m_Author, SFirstBook->m_Book, SFirstBook->m_Year,
+			SFirstBook->m_Pages, SFirstBook->m_Price);
 	}
 }
 void Sort(SBook** SFirstBook) {
@@ -51,7 +51,7 @@ void Sort(SBook** SFirstBook) {
 	int averagePrice = 0, counter = 0;
 
 	for (SElement = *SFirstBook; SElement->mNext; SElement = SElement->mNext) {
-		averagePrice += SElement->mPrice;
+		averagePrice += SElement->m_Price;
 		counter++;
 	}
 	averagePrice /= counter;
@@ -61,7 +61,7 @@ void Sort(SBook** SFirstBook) {
 			SElement = GetConcrete(*SFirstBook, j);
 			BooksMinusOne = GetConcrete(*SFirstBook, j - 1);
 
-			if (SElement->mPrice > averagePrice && strcmp(SElement->mBook, BooksMinusOne->mBook) < 0) {
+			if (SElement->m_Price > averagePrice && strcmp(SElement->m_Book, BooksMinusOne->m_Book) < 0) {
 				tempBook = *BooksMinusOne;
 				*BooksMinusOne = *SElement;
 				BooksMinusOne->mNext = tempBook.mNext;
@@ -132,15 +132,15 @@ void AddElement(SBook** SFirstBook) {
 	getchar();
 
 	printf("\nPlease, enter author's name: ");
-	gets(SNewElement->mAuthor);
+	gets(SNewElement->m_Author);
 	printf("\nPlease, enter book's name: ");
-	gets(SNewElement->mBook);
+	gets(SNewElement->m_Book);
 	printf("\nPlease, enter book's year: ");
-	scanf("%d", &SNewElement->mYear);
+	scanf("%d", &SNewElement->m_Year);
 	printf("\nPlease, enter number of pages: ");
-	scanf("%d", &SNewElement->mPages);
+	scanf("%d", &SNewElement->m_Pages);
 	printf("\nPlease, enter book's price: ");
-	scanf("%d", &SNewElement->mPrice);
+	scanf("%d", &SNewElement->m_Price);
 
 
 	printf("\nPlease, enter index where I should paste your element: ");
@@ -185,7 +185,7 @@ void DeletePKL(SBook** SFirstBook) {
 	char L[3] = "L";
 
 	while (SElement) {
-		if (SElement->mYear < 2000 && !(strncmp(SElement->mBook, P, 1) && strncmp(SElement->mBook, K, 1) && strncmp(SElement->mBook, L, 1))) {
+		if (SElement->m_Year < 2000 && !(strncmp(SElement->m_Book, P, 1) && strncmp(SElement->m_Book, K, 1) && strncmp(SElement->m_Book, L, 1))) {
 
 			if (SElement->mNext == NULL) {
 				PrevBook->mNext = SElement->mNext;
